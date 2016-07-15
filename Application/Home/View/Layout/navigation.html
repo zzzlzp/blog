@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default navbar-static-top">
+	<div class="container" style="padding-top: 5px">
+		<ul class="nav nav-pills">
+			<li role="presentation">
+				<a href="{:U('/Home/index')}">主页</a>
+			</li>
+			<li role="presentation">
+				<a href="{:U('/Home/Index/articleShowList')}">文章</a>
+			</li>
+			<li role="presentation">
+				<a href="{:U('/Home/Index/about')}">关于</a>
+			</li>
+			<if condition="I('session.user') eq ''">
+			<li role="presentation" class="col-md-push-9">
+				<a href="{:U('/Home/Admin/login')}">登录</a>
+			</li>
+			<else />
+			<li role="presentation" class="dropdown col-md-push-9">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#"
+					role="button" aria-haspopup="true" aria-expanded="false">
+					欢迎&nbsp{:I('session.user')}
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="{:U('/Home/Admin/logout')}">退出登录</a>
+					</li>
+				</ul>
+			</li>
+			</if>
+		</ul>
+	</div>
+</nav>
+<div class="container col-md-offset-1  col-xs-10">

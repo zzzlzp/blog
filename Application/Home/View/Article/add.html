@@ -1,0 +1,44 @@
+<include file="Layout:header" />
+<include file="layout:navigation" />
+<div class="panel panel-default">
+	<!-- Default panel contents -->
+	<div class="panel-heading">添加</div>
+	<div class="panel-body">
+		<if condition="$error neq ''">
+		<div class="alert alert-danger" role="alert">{$error}</div>
+		</if>
+		<form name="article" action="{:U('/Home/Article/add',array('id'=>$data['id']))}" method="post">
+			<table class="table text-center">
+				<tr>
+					<td>标题:</td>
+					<td>
+						<div class="col-sm-7">
+							<input type="text" name="title" class="form-control"
+								value="{$data.title}">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>作者:</td>
+					<td>
+						<div class="col-sm-7">
+							<input type="text" name="author" class="form-control"
+								placeholder="{:I('session.user')}"
+								value="{$data.author|default=I('session.user')}">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>内容:</td>
+					<td>
+						<textarea name="content" class="form-control" rows="5">{$data.content}</textarea>
+					</td>
+				</tr>
+			</table>
+			<div class="panel-footer">
+				<button type="submit" class="btn btn-success col-md-offset-10">提交</button>
+				<a href="{:U('/Home/Index/articleShowList')}" class="btn btn-info">返回</a>
+			</div>
+		</form>
+	</div>
+</div>

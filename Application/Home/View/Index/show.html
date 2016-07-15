@@ -1,0 +1,36 @@
+<include file="Layout:header" />
+<include file="Layout:navigation" />
+<div class="panel panel-default">
+	<div class="panel-heading">
+		文章
+		<if condition="I('session.user') neq ''">
+		<a href="{:U('/Home/Article/add')}" class="btn btn-success col-md-offset-11">添加</a>
+		</if>
+	</div>
+	<div class="panel-body"></div>
+	<table class="table text-center">
+		<tr>
+			<th class="text-center">id</th>
+			<th class="text-center">标题</th>
+			<th class="text-center">作者</th>
+			<th class="text-center">时间</th>
+			<th class="text-center">操作</th>
+		</tr>
+		<volist name="edit" id="data">
+		<tr>
+			<td>{$data.id}</td>
+			<td>{$data.title}</td>
+			<td>{$data.author}</td>
+			<td>{$data.create_time}</td>
+			<td>
+				<a type="button" class="btn btn-info btn-xs" href="{:U('/Home/Index/articleShow',array('id'=>$data['id']))}">查看</a>
+				<if condition="I('session.user') neq ''">
+				<a type="button" class="btn btn-primary btn-xs" href="{:U('/Home/Article/articleEdit',array('id'=>$data['id']))}">编辑</a>
+				<a type="button" class="btn btn-danger btn-xs" href="{:U('/Home/Article/articleDelete',array('id'=>$data['id']))}">删除</a>
+				</if>
+			</td>
+		</tr>
+		</volist>
+	</table>
+</div>
+<include file="Layout:footer" />

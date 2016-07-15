@@ -1,0 +1,29 @@
+<include file="Layout:header" />
+<include file="layout:navigation" />
+<div class="panel panel-default">
+	<!-- Default panel contents -->
+	<div class="panel-heading text-center">
+		<h1>{$data.title}</h1>
+	</div>
+	<div class="panel-body">
+		<ul class="list-group col-md-8 col-md-offset-2">
+			<li class="list-group-item text-center">
+				时间:&nbsp
+				<em>{$data.create_time}</em>
+			</li>
+			<li class="list-group-item">
+				<p>{$data.content}</p>
+			</li>
+			<li class="list-group-item text-right">作者:&nbsp&nbsp&nbsp{$data.author}</li>
+			<if condition="$data.update_time neq ''">
+			<li class="list-group-item text-right">
+				更新时间:&nbsp
+				<em>{$data.update_time}</em>
+			</li>
+			</if>
+		</ul>
+	</div>
+	<div class="panel-footer">
+		<a href="{:U('/Home/Index/articleShowList')}" class="btn btn-info">返回</a>
+	</div>
+</div>
